@@ -11,7 +11,7 @@ module.exports = {
     "no-console": ["warn"],
     "eol-last": ["off"],
     "comma-dangle": ["error", "never"],
-
+    "no-unused-vars": ["off"]
   },
   parser: "babel-eslint",
   parserOptions: {

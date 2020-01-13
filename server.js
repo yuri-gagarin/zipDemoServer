@@ -9,19 +9,28 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // database connection //
+// once properly connected emit a 'ready' event //
 const { dbPath, dbOptions } = config;
 mongoose.connect(dbPath, dbOptions, () => {
-  console.log("db connected");
+  // db connections logs here //
+  console.info("DB Connected");
 });
+mongoose.connection.once('open', () => {
+  app.emit('ready');
+});
+// END database setup and connection options //
 
 // api routes //
-const router = express.Router();
-
 // initialize routes //
+const router = express.Router();
 combinedRoutes(router);
 app.use(router);
 
-app.listen(PORT, () => {
-  console.log("Listening...");
-  console.log(`Running at PORT: ${PORT}`);
+
+// launch the server once eveything is ready //
+app.on('ready', () => {
+  app.listen(PORT, () => {
+    console.info("Listening...");
+    console.info(`Running at PORT: ${PORT}`);
+  });
 });
