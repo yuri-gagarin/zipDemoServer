@@ -9,6 +9,7 @@ module.exports = {
     "no-multiple-empty-lines": ["off"],
     "indent": ["error", 2],
     "no-console": ["warn"],
-    "eol-last": ["off"]
+    "eol-last": ["off"],
+    "comma-dangle": ["never", "error"]
   }
 }
