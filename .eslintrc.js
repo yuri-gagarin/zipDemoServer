@@ -10,6 +10,12 @@ module.exports = {
     "indent": ["error", 2],
     "no-console": ["warn"],
     "eol-last": ["off"],
-    "comma-dangle": ["never", "error"]
+    "comma-dangle": ["error", "never"],
+
+  },
+  parser: "babel-eslint",
+  parserOptions: {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
   }
 }
