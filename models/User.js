@@ -53,7 +53,8 @@ const userSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    required: false
+    required: true,
+    default: Date.now
   },
   editedAt: {
     type: Date,
