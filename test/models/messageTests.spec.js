@@ -59,7 +59,35 @@ describe("{Message} Model unit tests", function () {
   // END invalid {Message} model data tests //
   // valid {Message} model data tests //
   describe("User model with invalid parameters", function () {
-
+    let createdMessage;
+    const validMessageData = generateMessage();
+    it("Should create and save a {Message} model", function (done) {
+      Message.create(validMessageData)
+        .then((message) => {
+          createdMessage = message;
+          expect(message).to.be.an("object");
+          done();
+        });
+    });
+    it("Should correctly set the {user} field", function () {
+      expect(validMessageData.user).to.equal(createdMessage.user);
+    });
+    it("Should correctly set the {conversation} field", function () {
+      expect(validMessageData.conversation).to.equal(createdMessage.conversation);
+    });
+    it("Should correctly set the {content} field", function () {
+      expect(validMessageData.content).to.equal(createdMessage.content);
+    });
+    it("Should correctly set the {delivered} field", function () {
+      expect(createdMessage.delivered).to.equal(false);
+    });
+    it("Should correctly set the {read} field", function () {
+      expect(createdMessage.read).to.equal(false);
+    });
+    it("Should set the {createdAt} field to a {Date} instance", function () {
+      const { createdAt } = createdMessage;
+      expect(createdAt instanceof Date);
+    });
   });
   // END valid {Message} model data tests //
 });

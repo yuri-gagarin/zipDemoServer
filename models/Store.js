@@ -1,12 +1,20 @@
 import mongoose from "mongoose";
 
-const storeSchema = new mongoose.Schema({
-  administrators: [{
-    type: mongoose.Types.ObjectId,
-    ref: "User",
-    required: true
-  }],
-  name: {
+// custom validators //
+const validateAdmin = (adminArray) => {
+  return adminArray.length >= 1;
+};
+
+const Schema = mongoose.Schema;
+const storeSchema = new Schema({
+  administrators: {
+    type: [{
+      type: mongoose.Types.ObjectId,
+      ref: "User"
+    }],
+    validate: [validateAdmin, "must have at least one store administrator"]
+  },
+  storeName: {
     type: String,
     required: true
   },
@@ -18,15 +26,21 @@ const storeSchema = new mongoose.Schema({
   },
   location: {
     city: {
-      type: String
+      type: String,
+      required: true
     },
     country: {
-      type: String
-    },
-    coordinates: [{
-      type: Number,
+      type: String,
       required: true
-    }]
+    },
+    latitude: {
+      type: String,
+      required: true
+    },
+    longitude: {
+      type: String,
+      required: true
+    }
   },
   createdAt: {
     type: Date,

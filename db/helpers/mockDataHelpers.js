@@ -56,3 +56,27 @@ export const generateMessage = ({ conversationId, userId } = {}) => {
   };
   return messageData;
 };
+
+/**
+ * Generates a mock store for Store model
+ * @param {Object} options - An options object
+ * @param {string} options.userId - An ObjectId string for a User model link
+ * @param {string} options.category - A store category string
+ * @returns {Object} An object containing mocked Store data
+ */
+export const generateStore = ({ userId, category } = {}) => {
+  const _userId = userId || Types.ObjectId();
+
+  const storeData = {
+    administrators: [_userId],
+    storeName: faker.company.companyName(),
+    category: category,
+    location: {
+      city: faker.address.city(),
+      country: faker.address.country(),
+      latitude: faker.address.latitude(),
+      longitude: faker.address.longitude()
+    }
+  };
+  return storeData;
+};
