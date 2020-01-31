@@ -1,21 +1,22 @@
 import mongoose from "mongoose";
 
-const conversationSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+const conversationSchema = new Schema({
   startedBy: {
-    type: mongoose.Schema.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: "User",
     index: true
   },
   targetUsers: [
     {
-      type: mongoose.Schema.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "User",
       index: true
     }
   ],
   messages: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Message"
     }
   ],

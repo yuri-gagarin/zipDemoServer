@@ -9,22 +9,22 @@ describe("{User} Model unit tests", function () {
   before("Connect to the database", function (done) {
     const { dbPath, dbOptions } = config;
     mongoose.connect(dbPath, dbOptions, (error) => {
-      if (error) return console.error(error);
+      if (error) return done(error);
       return done();
     });
   });
   after("Close the connection and clean up", function (done) {
     mongoose.disconnect((error) => {
-      if (error) return console.error(error);
+      if (error) return done(error);
       return done();
     });
   });
   // end pre-test setup and cleanup //
   // invalid {User} data model tests //
-  describe("Invalid {User} Model data", function () {
+  describe("Invalid {User} model data", function () {
     const validUserData = generateUserData();
     it("Should NOT create a new record without a {firstName} field", function (done) {
-      User.create({...validUserData, firstName: null})
+      User.create({ ...validUserData, firstName: null })
         .catch((error) => {
           expect(error).to.be.an("object");
           expect(error.name).to.equal("ValidationError");
@@ -32,7 +32,7 @@ describe("{User} Model unit tests", function () {
         });
     });
     it("Should NOT create a new record without a {lastName} field", function (done) {
-      User.create({...validUserData, lastName: null})
+      User.create({ ...validUserData, lastName: null })
         .catch((error) => {
           expect(error).to.be.an("object");
           expect(error.name).to.equal("ValidationError");
@@ -40,7 +40,7 @@ describe("{User} Model unit tests", function () {
         });
     });
     it("Should NOT create a new record without a {password} field", function (done) {
-      User.create({...validUserData, password: null})
+      User.create({ ...validUserData, password: null })
         .catch((error) => {
           expect(error).to.be.an("object");
           expect(error.name).to.equal("ValidationError");
@@ -48,7 +48,7 @@ describe("{User} Model unit tests", function () {
         });
     });
     it("Should NOT create a new record without an {email} field", function (done) {
-      User.create({...validUserData, email: null})
+      User.create({ ...validUserData, email: null })
         .catch((error) => {
           expect(error).to.be.an("object");
           expect(error.name).to.equal("ValidationError");
@@ -56,7 +56,7 @@ describe("{User} Model unit tests", function () {
         });
     });
     it("Should NOT create a new record witout a {phoneNumber} field", function (done) {
-      User.create({...validUserData, phoneNumber: null})
+      User.create({ ...validUserData, phoneNumber: null })
         .catch((error) => {
           expect(error).to.be.an("object");
           expect(error.name).to.equal("ValidationError");
@@ -66,7 +66,7 @@ describe("{User} Model unit tests", function () {
   });
   // END invalid {User} model tests //
   // valid {User} data model tests //
-  describe("Valid {User} Model data", function () {
+  describe("Valid {User} model data", function () {
     let createdUser;
     const userData = generateUserData();
 
