@@ -5,17 +5,25 @@ module.exports = {
     'eslint-config-mfe/eslintrc.es6.js'
   ],
   rules: {
-    "quotes": ["off", "double"],
-    "no-multiple-empty-lines": ["off"],
+    "comma-dangle": ["error", "never"],
+    "eol-last": ["off"],
+    "import/no-extraneous-dependencies": ["warn"],
     "indent": ["error", 2],
     "no-console": ["warn"],
-    "eol-last": ["off"],
-    "comma-dangle": ["error", "never"],
-    "no-unused-vars": ["off"]
+    "no-multiple-empty-lines": ["off"],
+    "no-unused-vars": ["off"],
+    "prefer-arrow-callback": ["warn"],
+    "prefer-destructuring": ["off"],
+    "quotes": ["off", "double"]
   },
   parser: "babel-eslint",
   parserOptions: {
     "sourceType": "module",
     "allowImportExportEverywhere": true
+  },
+  env: {
+    "commonjs": true,
+    "node": true,
+    "mocha": true
   }
 }
