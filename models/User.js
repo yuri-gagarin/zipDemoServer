@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
-const userSchema = mongoose.Schema({
+const Schema = mongoose.Schema;
+const userSchema = new Schema({
   firstName: {
     type: String,
     required: true
@@ -34,11 +35,13 @@ const userSchema = mongoose.Schema({
   },
   banned: {
     type: Boolean,
-    required: true
+    required: true,
+    default: false
   },
   warned: {
     type: Boolean,
-    required: true
+    required: true,
+    default: false
   },
   firstSignIn: {
     type: Date,
@@ -46,7 +49,7 @@ const userSchema = mongoose.Schema({
   },
   lastSignIn: {
     type: Date,
-    requited: false
+    required: false
   },
   createdAt: {
     type: Date,
@@ -54,7 +57,7 @@ const userSchema = mongoose.Schema({
   },
   editedAt: {
     type: Date,
-    required: true
+    required: false
   }
 });
 

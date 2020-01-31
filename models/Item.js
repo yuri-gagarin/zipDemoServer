@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 const itemSchema = new mongoose.Schema({
   store: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Store"
+    ref: "Store",
+    index: true
   },
   price: {
     type: Number,

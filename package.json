@@ -4,7 +4,7 @@
   "description": "server for Zip app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "env NODE_ENV=test mocha ./test/** --require @babel/register",
     "precommit": "lint-staged",
     "start": "nodemon --exec babel-node server.js"
   },
@@ -15,12 +15,15 @@
     "@babel/node": "^7.8.0",
     "@babel/preset-env": "^7.8.2",
     "babel-eslint": "8.2.1",
+    "chai": "^4.2.0",
     "eslint": "4.17.0",
     "eslint-config-airbnb-base": "12.1.0",
     "eslint-config-mfe": "0.1.2",
     "eslint-plugin-import": "2.8.0",
+    "faker": "^4.1.0",
     "husky": "0.14.3",
     "lint-staged": "6.1.0",
+    "mocha": "^7.0.1",
     "nodemon": "^2.0.2"
   },
   "dependencies": {

@@ -3,16 +3,17 @@ import mongoose from "mongoose";
 const storeSchema = new mongoose.Schema({
   administrators: [{
     type: mongoose.Types.ObjectId,
+    ref: "User",
     required: true
   }],
   name: {
     type: String,
-    enum: ["general", "sports", "entertainment", "transoprtation"],
-    default: "general",
     required: true
   },
   category: {
     type: String,
+    enum: ["general", "sports", "entertainment", "transoprtation"],
+    default: "general",
     required: true
   },
   location: {

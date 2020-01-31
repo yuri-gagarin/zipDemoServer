@@ -3,15 +3,18 @@ import mongoose from "mongoose";
 const reservationSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"
+    ref: "User",
+    index: true
   },
   store: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Store"
+    ref: "Store",
+    index: true
   },
   item: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Item"
+    ref: "Item",
+    index: true
   },
   from: {
     type: Date,
