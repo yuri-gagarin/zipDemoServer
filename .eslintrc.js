@@ -5,6 +5,7 @@ module.exports = {
     'eslint-config-mfe/eslintrc.es6.js'
   ],
   rules: {
+    "arrow-body-style": ["off"],
     "comma-dangle": ["error", "never"],
     "eol-last": ["off"],
     "import/no-extraneous-dependencies": ["warn"],
@@ -12,6 +13,8 @@ module.exports = {
     "no-console": ["warn"],
     "no-multiple-empty-lines": ["off"],
     "no-unused-vars": ["off"],
+    "object-shorthand": ["error", "consistent"],
+    "padded-blocks": ["off"],
     "prefer-arrow-callback": ["warn"],
     "prefer-destructuring": ["off"],
     "quotes": ["off", "double"]

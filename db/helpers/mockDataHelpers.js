@@ -30,7 +30,7 @@ export const generateConversation = ({ startingUser, target } = {}) => {
 
   const convoData = {
     startedBy: startedBy,
-    targetUsers: [targetUser],
+    recipients: [targetUser],
     messages: [],
     numOfMessages: 0
   };
