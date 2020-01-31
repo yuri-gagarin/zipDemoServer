@@ -20,8 +20,8 @@ export const generateUserData = () => {
 /**
  * Generates a mock conversation for Conversation model
  * @param {Object} options - An options object
- * @param {string} options.startingUser - An objectId string for a starting User
- * @param {string} options.target - An objectId string for a target User
+ * @param {string} options.startingUser - An ObjectId string for a starting User
+ * @param {string} options.target - An ObjectId string for a target User
  * @return {Object} An object containing mocked Conversation data
  */
 export const generateConversation = ({ startingUser, target } = {}) => {
@@ -31,12 +31,28 @@ export const generateConversation = ({ startingUser, target } = {}) => {
   const convoData = {
     startedBy: startedBy,
     recipients: [targetUser],
+    participants: [startedBy, targetUser],
     messages: [],
     numOfMessages: 0
   };
   return convoData;
 };
 
-export const generateMessage = () => {
+/**
+ * Generates a mock message for Message model
+ * @param {Object} options - An options object
+ * @param {string} options.conversationId - An ObjectId string for a Conversation model
+ * @param {string} options.userId - An ObjectId string for a Conversation model
+ * @returns {Object} An object containing mocked Message data
+ */
+export const generateMessage = ({ conversationId, userId } = {}) => {
+  const _conversationId = conversationId || Types.ObjectId();
+  const _userId = userId || Types.ObjectId();
 
+  const messageData = {
+    user: _userId,
+    conversation: _conversationId,
+    content: faker.lorem.paragraph(1)
+  };
+  return messageData;
 };

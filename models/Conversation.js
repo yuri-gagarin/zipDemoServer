@@ -20,12 +20,12 @@ const conversationSchema = new Schema({
     }],
     validate: [minRecipients, "needs to have at least one recipient"]
   },
-  participants: [
-    {
+  participants: {
+    type: [{
       type: Schema.Types.ObjectId,
       ref: "User"
-    }
-  ],
+    }]
+  },
   messages: [
     {
       type: Schema.Types.ObjectId,
