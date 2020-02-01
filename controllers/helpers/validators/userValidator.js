@@ -4,7 +4,7 @@ export default function (userData) {
   const errors = {};
   // validate user name //
   if (userData.firstName) {
-    if (userData.name.length < 2) {
+    if (userData.firstName.length < 2) {
       errors.name = "Name should be at least 2 characters";
     }
   } else {

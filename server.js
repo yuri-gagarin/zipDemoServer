@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import passport from "passport";
+import bodyParser from "body-parser";
 import combinedRoutes from "./routes/combinedRoutes";
 import config from "./config/config";
 import passportStrategy from "./controllers/helpers/passportStrategy";
@@ -19,6 +20,8 @@ mongoose.connect(dbPath, dbOptions, () => {
 mongoose.connection.once('open', () => {
   app.emit('ready');
 });
+// body parser //
+app.use(bodyParser.urlencoded({ extended: false }));
 // END database setup and connection options //
 // passport middleware //
 app.use(passport.initialize());

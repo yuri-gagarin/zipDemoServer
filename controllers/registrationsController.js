@@ -4,6 +4,7 @@ import User from "../models/User";
 export default {
   registerAndCreateUser: (req, res) => {
     // validate input //
+    console.log(req.body);
     const userData = req.body;
     const { errors, isValid } = userValidator(userData);
 
