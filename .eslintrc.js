@@ -12,6 +12,7 @@ module.exports = {
     "indent": ["error", 2],
     "no-console": ["warn"],
     "no-multiple-empty-lines": ["off"],
+    "no-trailing-spaces": ["off"],
     "no-unused-vars": ["off"],
     "object-curly-newline": ["off"],
     "object-shorthand": ["error", "consistent"],
