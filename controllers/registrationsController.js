@@ -1,21 +1,32 @@
+import bcrypt from "bcrypt";
 import userValidator from "./helpers/validators/userValidator";
 import User from "../models/User";
+// constants imports //
+import { SALT_ROUNDS, INVALID_INPUT_ERROR } from "./helpers/controllerConstants";
 
 export default {
   registerAndCreateUser: (req, res) => {
     // validate input //
-    console.log(req.body);
     const userData = req.body;
     const { errors, isValid } = userValidator(userData);
+    let status;
 
     if (!isValid) {
-      return res.status(400).json({
-        message: "Invalid input",
-        errors: errors
-      });
+      status = 400;
+      return Promise.reject(INVALID_INPUT_ERROR);
     } else {
       // initiate and create a User model //
-      return User.create(userData)
+      return bcrypt.hash(userData.password, SALT_ROUNDS)
+        .then((hash) => {
+          const newUser = new User({
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            email: userData.email,
+            phoneNumber: userData.phoneNumber,
+            password: hash
+          });
+          return newUser.save();
+        })
         .then((user) => {
           return res.json({
             message: "User created",
@@ -29,13 +40,19 @@ export default {
           });
         })
         .catch((error) => {
-          return res.status(500).json({
-            message: "Something went wrong on our end",
-            error: error
-          });
+          if (error.message === INVALID_INPUT_ERROR.message) {
+            return res.status(status).json({
+              message: error.message,
+              error: errors
+            });
+          } else {
+            return res.status(status || 500).json({
+              message: "Something went wrong on our end",
+              error: error
+            });
+          }
         });
     }
-    
   },
   editUser: (req, user) => {
 
