@@ -12,6 +12,13 @@ export const isEmpty = (value) => {
   );
 };
 
-export const validatePhone = (phoneNumber) => {
+/**
+  * Validates user email input
+  * @param {string} user  - A user email
+  * @return {boolean} Result tested against regex. True if valid, False if invalid
+  */
+export const validateEmail = (email) => {
+  const regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
+  return regex.test(String(email).toLowerCase());
 };
