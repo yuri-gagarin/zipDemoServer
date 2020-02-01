@@ -1,8 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
-
+import passport from "passport";
 import combinedRoutes from "./routes/combinedRoutes";
 import config from "./config/config";
+import passportStrategy from "./controllers/helpers/passportStrategy";
 
 // app setup //
 const app = express();
@@ -19,7 +20,9 @@ mongoose.connection.once('open', () => {
   app.emit('ready');
 });
 // END database setup and connection options //
-
+// passport middleware //
+app.use(passport.initialize());
+passportStrategy(passport);
 // api routes //
 // initialize routes //
 const router = express.Router();
