@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
-
+import { storeCategories } from "./helpers/modelConstants";
+// constants //
+const { GENERAL, SPORTS, ENTERTAINMENT, TRANSPORTATION } = storeCategories;
 // custom validators //
 const validateAdmin = (adminArray) => {
   return adminArray.length >= 1;
@@ -20,8 +22,8 @@ const storeSchema = new Schema({
   },
   category: {
     type: String,
-    enum: ["general", "sports", "entertainment", "transoprtation"],
-    default: "general",
+    enum: [GENERAL, SPORTS, ENTERTAINMENT, TRANSPORTATION],
+    default: GENERAL,
     required: true
   },
   location: {

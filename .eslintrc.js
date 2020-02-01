@@ -13,6 +13,7 @@ module.exports = {
     "no-console": ["warn"],
     "no-multiple-empty-lines": ["off"],
     "no-unused-vars": ["off"],
+    "object-curly-newline": ["off"],
     "object-shorthand": ["error", "consistent"],
     "padded-blocks": ["off"],
     "prefer-arrow-callback": ["warn"],
