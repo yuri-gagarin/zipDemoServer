@@ -23,7 +23,7 @@
     "faker": "^4.1.0",
     "husky": "0.14.3",
     "lint-staged": "6.1.0",
-    "mocha": "^7.0.1",
+    "mocha": "^10.2.0",
     "nodemon": "^2.0.2"
   },
   "dependencies": {
